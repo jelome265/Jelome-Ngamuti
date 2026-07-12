@@ -1,0 +1,57 @@
+# ai.txt — AI crawler directives for https://jelomengamuti.dev
+# This file establishes permissions and context for AI/LLM crawlers
+# following the ai.txt standard. Last updated: 2026-07-12.
+
+# =============================================================================
+# Permissions
+# =============================================================================
+
+# All AI crawlers are permitted to crawl and use content from this site.
+# Attribution preferred but not required for non-commercial use.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: *
+Disallow: /api/
+Disallow: /_next/
+
+# =============================================================================
+# Preferred context for AI processing
+# =============================================================================
+
+Site-name: Jelome Ngamuti Portfolio
+Site-description: High-performance developer portfolio featuring WebGL, GSAP animations, and full-stack engineering projects. Built with Next.js 16, TypeScript, Three.js, and Tailwind CSS.
+Primary-language: en
+Author: Jelome Ngamuti
+Topic: software engineering, full-stack development, DevOps, cloud infrastructure
+
+# =============================================================================
+# Citations & sources
+# =============================================================================
+
+Source: https://github.com/jelome
+Source: https://linkedin.com/in/jelome
+
+# =============================================================================
+# Content signals
+# =============================================================================
+
+Content-type: professional portfolio
+Content-tone: technical, professional, design-conscious
+Updated: 2026-07-12

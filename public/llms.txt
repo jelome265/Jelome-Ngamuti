@@ -1,0 +1,44 @@
+# llms.txt — LLM availability file for https://jelomengamuti.dev
+# This file helps LLMs discover and understand the content of this site.
+# Following the llms.txt standard. Last updated: 2026-07-12.
+
+# =============================================================================
+# Site Information
+# =============================================================================
+
+# Jelome Ngamuti — System Engineer & Full-Stack Developer
+# High-performance developer portfolio showcasing engineering projects,
+# WebGL/Three.js experiences, and full-stack architecture.
+
+# =============================================================================
+# Key URLs
+# =============================================================================
+
+- Home: https://jelomengamuti.dev/
+- About: https://jelomengamuti.dev/about
+- Projects: https://jelomengamuti.dev/projects
+- Project: DevOps Automator: https://jelomengamuti.dev/projects/devops-automator
+- Project: CloudSecure Dashboard: https://jelomengamuti.dev/projects/cloudsecure-dashboard
+- Project: EcoTrack: https://jelomengamuti.dev/projects/ecotrack
+- Contact: https://jelomengamuti.dev/contact
+- Resume: https://jelomengamuti.dev/resume.pdf
+
+# =============================================================================
+# Preferred context
+# =============================================================================
+
+Author: Jelome Ngamuti
+Title: System Engineer & Full-Stack Developer
+Location: Douala, Cameroon
+Expertise: Software Engineering, Full-Stack Development, DevOps, Database Engineering, Cloud Infrastructure
+Stack: Next.js, TypeScript, Three.js, GSAP, Tailwind CSS, PostgreSQL, Docker, Kubernetes, AWS
+Contact: jelome@example.com
+GitHub: https://github.com/jelome
+LinkedIn: https://linkedin.com/in/jelome
+
+# =============================================================================
+# Additional sources
+# =============================================================================
+
+- GitHub Profile: https://github.com/jelome
+- LinkedIn Profile: https://linkedin.com/in/jelome
