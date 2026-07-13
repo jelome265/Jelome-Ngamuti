@@ -1,6 +1,6 @@
 import { type Experience } from '@/lib/types/experience';
 
-const experiencesData: Experience[] = [
+export const experience: Experience[] = [
   {
     id: 'exp-1',
     role: 'Software Engineering Student',
@@ -32,6 +32,3 @@ const experiencesData: Experience[] = [
     type: 'freelance',
   },
 ];
-
-export const experiences = experiencesData;
-export const experience = experiencesData;

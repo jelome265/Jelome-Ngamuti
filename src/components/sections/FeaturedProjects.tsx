@@ -7,16 +7,7 @@ import { ProjectCard } from '@/components/ui/ProjectCard';
 import { Badge } from '@/components/ui/Badge';
 import { cn } from '@/lib/utils/cn';
 import { projects } from '@/lib/data/projects';
-import type { ProjectCategory } from '@/lib/types/project';
-
-const CATEGORIES: (ProjectCategory | 'all')[] = [
-  'all',
-  'frontend',
-  'backend',
-  'fullstack',
-  'devops',
-  'database',
-];
+import { CATEGORIES } from '@/lib/config/project-categories';
 
 export function FeaturedProjects() {
   const [filter, setFilter] = useState<ProjectCategory | 'all'>('all');

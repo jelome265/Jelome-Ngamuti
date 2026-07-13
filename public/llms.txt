@@ -17,9 +17,17 @@
 - Home: https://jelomengamuti.dev/
 - About: https://jelomengamuti.dev/about
 - Projects: https://jelomengamuti.dev/projects
-- Project: DevOps Automator: https://jelomengamuti.dev/projects/devops-automator
-- Project: CloudSecure Dashboard: https://jelomengamuti.dev/projects/cloudsecure-dashboard
-- Project: EcoTrack: https://jelomengamuti.dev/projects/ecotrack
+- Project: Bean Boutique: https://jelomengamuti.dev/projects/bean-boutique
+- Project: Task Management API: https://jelomengamuti.dev/projects/task-management-api
+- Project: E-Commerce Platform: https://jelomengamuti.dev/projects/ecommerce-platform
+- Project: DevOps Pipeline: https://jelomengamuti.dev/projects/devops-pipeline
+- Project: Database Optimizer: https://jelomengamuti.dev/projects/database-optimizer
+- Project: Portfolio Website: https://jelomengamuti.dev/projects/portfolio-website
+- Project: Weather Dashboard: https://jelomengamuti.dev/projects/weather-dashboard
+- Project: Auth Service: https://jelomengamuti.dev/projects/auth-service
+- Project: Data Pipeline: https://jelomengamuti.dev/projects/data-pipeline
+- Project: Cloud Infrastructure: https://jelomengamuti.dev/projects/cloud-infra
+- Project: Chat Application: https://jelomengamuti.dev/projects/chat-application
 - Contact: https://jelomengamuti.dev/contact
 - Resume: https://jelomengamuti.dev/resume.pdf
 

@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-
-const SECTION_IDS = ['hero', 'about', 'skills', 'projects', 'experience', 'education', 'contact'];
+import { SECTION_RAIL_IDS } from '@/lib/config/navigation';
 
 export function useActiveSection(): string {
   const [active, setActive] = useState('hero');
@@ -16,7 +15,7 @@ export function useActiveSection(): string {
       },
       { threshold: 0.3, rootMargin: '-80px 0px 0px 0px' }
     );
-    for (const id of SECTION_IDS) {
+    for (const id of SECTION_RAIL_IDS) {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     }

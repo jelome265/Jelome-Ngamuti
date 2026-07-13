@@ -3,21 +3,9 @@
 import { useCallback } from 'react';
 import { cn } from '@/lib/utils/cn';
 import { useActiveSection } from '@/lib/hooks/useActiveSection';
+import { NAV_LINKS, SECTION_RAIL_IDS } from '@/lib/config/navigation';
 
-interface RailSection {
-  id: string;
-  label: string;
-}
-
-const SECTIONS: RailSection[] = [
-  { id: 'hero', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'education', label: 'Education' },
-  { id: 'contact', label: 'Contact' },
-];
+const railLinks = NAV_LINKS.filter((l) => SECTION_RAIL_IDS.includes(l.id as typeof SECTION_RAIL_IDS[number]));
 
 export function SectionRail() {
   const activeSection = useActiveSection();
@@ -34,7 +22,7 @@ export function SectionRail() {
       aria-label="Section navigation"
       className="fixed right-4 sm:right-6 top-1/2 -translate-y-1/2 z-30 hidden lg:flex flex-col items-center gap-3"
     >
-      {SECTIONS.map((section) => (
+      {railLinks.map((section) => (
         <button
           key={section.id}
           onClick={() => scrollTo(section.id)}

@@ -18,6 +18,7 @@ const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-int
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], display: 'swap', variable: '--font-mono' });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://jelomengamuti.dev'),
   title: 'Jelome Ngamuti — Software Engineer & Full-Stack Developer',
   description: 'I build secure, scalable, and user-focused software solutions.',
   openGraph: {

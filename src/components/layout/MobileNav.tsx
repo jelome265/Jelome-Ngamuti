@@ -2,22 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils/cn';
-
-interface NavLink {
-  label: string;
-  id: string;
-}
-
-const NAV_LINKS: NavLink[] = [
-  { label: 'Home', id: 'hero' },
-  { label: 'About', id: 'about' },
-  { label: 'Skills', id: 'skills' },
-  { label: 'Projects', id: 'projects' },
-  { label: 'Experience', id: 'experience' },
-  { label: 'Education', id: 'education' },
-  { label: 'Testimonials', id: 'testimonials' },
-  { label: 'Contact', id: 'contact' },
-];
+import { NAV_LINKS } from '@/lib/config/navigation';
 
 interface MobileNavProps {
   isOpen: boolean;
