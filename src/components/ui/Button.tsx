@@ -13,6 +13,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   as?: 'button' | 'a';
   href?: string;
+  loading?: boolean;
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
@@ -37,12 +38,15 @@ export function Button({
   className,
   as: Tag = 'button',
   href,
+  loading,
+  disabled,
   ...props
 }: ButtonProps) {
   const classes = cn(
     'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 ease-out focus-visible:outline-2 focus-visible:outline-primary cursor-pointer select-none',
     variantClasses[variant],
     sizeClasses[size],
+    loading && 'pointer-events-none opacity-70',
     className,
   );
 
@@ -55,7 +59,13 @@ export function Button({
   }
 
   return (
-    <button type="button" className={classes} {...props}>
+    <button type="button" className={classes} disabled={disabled || loading} {...props}>
+      {loading && (
+        <svg className="animate-spin -ml-1 h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+        </svg>
+      )}
       {children}
     </button>
   );

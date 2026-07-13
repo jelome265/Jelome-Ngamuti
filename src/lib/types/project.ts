@@ -1,3 +1,5 @@
+export type ProjectCategory = 'frontend' | 'backend' | 'fullstack' | 'devops' | 'database';
+
 export interface Project {
   slug: string;
   title: string;
@@ -6,7 +8,7 @@ export interface Project {
   thumbnail: string;
   screenshots: string[];
   technologies: string[];
-  category: 'frontend' | 'backend' | 'fullstack' | 'devops' | 'database';
+  category: ProjectCategory;
   challenges?: string[];
   solutions?: string[];
   features: string[];

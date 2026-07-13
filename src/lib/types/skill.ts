@@ -1,6 +1,8 @@
+export type SkillCategory = 'programming' | 'frontend' | 'backend' | 'database' | 'devops' | 'cloud' | 'tools';
+
 export interface Skill {
   name: string;
-  category: 'programming' | 'frontend' | 'backend' | 'database' | 'devops' | 'cloud' | 'tools';
+  category: SkillCategory;
   icon?: string;
   level?: number;
 }
