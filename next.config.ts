@@ -14,6 +14,9 @@ const csp = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  experimental: {
+    turbopackFileSystemCacheForDev: false,
+  },
   turbopack: {},
   images: {
     formats: ['image/avif', 'image/webp'],
