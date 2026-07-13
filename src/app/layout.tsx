@@ -13,6 +13,7 @@ import { ThemeProvider } from '@/lib/providers/ThemeProvider';
 import { DeviceTierProvider } from '@/lib/providers/DeviceTierProvider';
 import { LenisProvider } from '@/lib/providers/LenisProvider';
 import { AnalyticsProvider } from '@/lib/providers/AnalyticsProvider';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], display: 'swap', variable: '--font-mono' });
