@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { GlassCard } from '@/components/ui/GlassCard';
@@ -76,8 +77,25 @@ export function ContactSection() {
     setState('submitting');
 
     try {
-      // Simulate API call — replace with EmailJS or backend integration
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (serviceId && templateId && publicKey) {
+        await emailjs.send(
+          serviceId,
+          templateId,
+          {
+            from_name: formData.name,
+            from_email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+          },
+          publicKey,
+        );
+      } else {
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+      }
 
       setState('success');
       setFormData(initialFormData);

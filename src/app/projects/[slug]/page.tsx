@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
 import { Badge } from '@/components/ui/Badge';
@@ -10,6 +11,20 @@ interface Props {
 
 export async function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) return {};
+  return {
+    title: `${project.title} — Jelome Ngamuti`,
+    description: project.description,
+    openGraph: {
+      title: `${project.title} — Jelome Ngamuti`,
+      description: project.description,
+    },
+  };
 }
 
 export default async function ProjectDetailPage({ params }: Props) {

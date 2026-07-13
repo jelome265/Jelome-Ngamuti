@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useMemo, useRef, useEffect } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ProjectCard } from '@/components/ui/ProjectCard';
-import { Badge } from '@/components/ui/Badge';
 import { cn } from '@/lib/utils/cn';
 import { projects } from '@/lib/data/projects';
 import { CATEGORIES } from '@/lib/config/project-categories';
+import type { ProjectCategory } from '@/lib/types/project';
 
 export function FeaturedProjects() {
   const [filter, setFilter] = useState<ProjectCategory | 'all'>('all');

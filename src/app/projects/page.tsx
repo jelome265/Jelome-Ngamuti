@@ -7,6 +7,7 @@ import { ProjectCard } from '@/components/ui/ProjectCard';
 import { cn } from '@/lib/utils/cn';
 import { projects } from '@/lib/data/projects';
 import { CATEGORIES } from '@/lib/config/project-categories';
+import type { ProjectCategory } from '@/lib/types/project';
 
 export default function ProjectsPage() {
   const [filter, setFilter] = useState<ProjectCategory | 'all'>('all');

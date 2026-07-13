@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     description:
       'Get in touch with Jelome Ngamuti for collaboration, project inquiries, or opportunities.',
   },
+  robots: { index: true, follow: true },
 };
 
 export default function ContactPage() {

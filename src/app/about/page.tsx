@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     description:
       'Learn more about Jelome Ngamuti — his background, interests, career goals, and what drives him as a software engineer.',
   },
+  robots: { index: true, follow: true },
 };
 
 export default function AboutPage() {
