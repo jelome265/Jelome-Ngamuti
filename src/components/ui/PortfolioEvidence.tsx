@@ -69,7 +69,7 @@ function EvidenceFigure({
           loading="lazy"
           decoding="async"
           width={960}
-          height={671}
+          height={720}
           className="aspect-[4/3] w-full object-cover"
         />
       )}
@@ -96,19 +96,8 @@ export function PortfolioEvidence({ variant }: PortfolioEvidenceProps) {
 
   const images: readonly EvidenceImage[] =
     variant === "home"
-      ? [
-          placeImages[0],
-          interfaceImages[0],
-          interfaceImages[1],
-          placeImages[1],
-        ]
-      : [
-          placeImages[1],
-          interfaceImages[2],
-          interfaceImages[0],
-          placeImages[0],
-          interfaceImages[1],
-        ];
+      ? [placeImages[0], interfaceImages[0], interfaceImages[1], placeImages[1]]
+      : [placeImages[1], interfaceImages[2], interfaceImages[0], placeImages[0], interfaceImages[1]];
 
   const placements =
     variant === "home"
@@ -140,8 +129,8 @@ export function PortfolioEvidence({ variant }: PortfolioEvidenceProps) {
         </h2>
         <p className="reveal col-span-5 col-start-8 text-[18px] leading-[1.45] text-muted max-md:col-span-full max-md:col-start-auto">
           {variant === "home"
-            ? "Selected evidence from a project in development, alongside photographs of Lilongwe—the place I work from."
-            : "The project images are real interface captures. The city photographs provide local context; they are not presented as my workspace or as screenshots of Sitolo."}
+            ? "Selected project evidence, alongside photographs of Lilongwe—the place I work from."
+            : "I build from Lilongwe, Malawi. Local street scenes sit alongside interface captures from USORA, a project in development."}
         </p>
       </div>
 
