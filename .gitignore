@@ -5,6 +5,9 @@ node_modules/
 dist/
 *.tsbuildinfo
 
+# Local design inspection output
+.taste-skill/
+
 # Local environment files
 .env
 .env.*

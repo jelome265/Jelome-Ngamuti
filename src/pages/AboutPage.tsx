@@ -1,5 +1,5 @@
 import { PageIntro } from "../components/ui/PageIntro";
-import { PictureSlot } from "../components/ui/PictureSlot";
+import { PortfolioEvidence } from "../components/ui/PortfolioEvidence";
 import { aboutContent } from "../data/about";
 import { profile } from "../data/profile";
 import { focusGroups } from "../data/focus";
@@ -22,12 +22,12 @@ function withHighlights(text: string) {
 export function AboutPage() {
   return (
     <>
-      <section aria-labelledby="about-heading" className="mx-auto max-w-[1280px] px-[32px] pt-[120px] pb-[120px] max-md:px-[18px] max-md:pt-16">
+      <section aria-labelledby="about-heading" className="mx-auto max-w-[1280px] px-[32px] pt-[120px] pb-[120px] max-md:px-[18px] max-md:pt-16 max-md:pb-16">
         <PageIntro id="about-heading" title="About">
           {profile.positioning}
         </PageIntro>
 
-        <div className="mt-[96px] columns-2 gap-x-12 text-[24px] leading-[1.35] max-md:columns-1 max-md:text-[18px] max-md:leading-[1.4]">
+        <div className="mt-[96px] columns-2 gap-x-12 text-[20px] leading-[1.5] max-md:columns-1 max-md:mt-12 max-md:text-[18px]">
           <p className="reveal mb-8 break-inside-avoid">{withHighlights(aboutContent.intro)}</p>
           <p className="reveal mb-8 break-inside-avoid text-muted">{withHighlights(aboutContent.currentStudy)}</p>
           {aboutContent.principles.map((principle) => (
@@ -37,11 +37,9 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section aria-label="Picture" className="mx-auto max-w-[1280px] px-[32px] pb-[120px] max-md:px-[18px]">
-        <PictureSlot label="a place or work of the owner" ratio="16/9" />
-      </section>
+      <PortfolioEvidence variant="about" />
 
-      <section aria-labelledby="focus-heading" className="mx-auto max-w-[1280px] px-[32px] pb-[120px] max-md:px-[18px]">
+      <section aria-labelledby="focus-heading" className="mx-auto max-w-[1280px] px-[32px] pb-[120px] max-md:px-[18px] max-md:pb-16">
         <h2 id="focus-heading" className="reveal text-[40px] leading-[1.1] font-bold tracking-[-0.02em]">
           Technical focus
         </h2>
@@ -54,7 +52,7 @@ export function AboutPage() {
           {focusGroups.map((group, index) => (
             <div
               key={group.area}
-              className={`reveal grid grid-cols-[1fr_1.4fr_1fr] gap-8 px-6 py-6 text-[24px] leading-[1.3] max-md:grid-cols-1 max-md:gap-2 max-md:px-4 ${
+              className={`reveal grid grid-cols-[1fr_1.4fr_1fr] gap-8 px-6 py-6 text-[20px] leading-[1.4] max-md:grid-cols-1 max-md:gap-2 max-md:px-4 max-md:py-5 max-md:text-[18px] ${
                 index % 2 === 0 ? "bg-surface" : "bg-transparent"
               }`}
             >

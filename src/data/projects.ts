@@ -1,7 +1,8 @@
 import type { Project } from "../types/portfolio";
+import { lilongwePhotos } from "./imagery";
 
 // Facts verified against public repositories (docs/phases/phase-2-candidate-evidence.md).
-// Owner-approved selection: Sitolo, USORA, Rustacean. Copy is pending final Phase 2 approval.
+// Owner-approved selection: Sitolo, USORA, Rustacean. No fictional product screenshots are used.
 export const projects: readonly Project[] = [
   {
     id: "usora",
@@ -17,10 +18,17 @@ export const projects: readonly Project[] = [
     preview: {
       src: "/images/usora-preview.png",
       alt: "Screenshot of the USORA KYC platform showing a facial verification view beside a verification pipeline panel.",
+      caption: "USORA interface, captured by its owner.",
     },
     fragments: [
-      { src: "/images/usora-face-panel.png", alt: "Crop of the USORA screenshot: the facial verification panel." },
-      { src: "/images/usora-pipeline-panel.png", alt: "Crop of the USORA screenshot: the verification pipeline panel." },
+      {
+        src: "/images/usora-face-panel.png",
+        alt: "Crop of the USORA screenshot: the facial verification panel.",
+      },
+      {
+        src: "/images/usora-pipeline-panel.png",
+        alt: "Crop of the USORA screenshot: the verification pipeline panel.",
+      },
     ],
   },
   {
@@ -34,6 +42,7 @@ export const projects: readonly Project[] = [
     technologies: ["Rust"],
     note: "Pre-validation. Commercial pricing and segment assumptions are not yet tested.",
     repoUrl: "https://github.com/jelome265/sitolo",
+    contextPhotos: lilongwePhotos,
   },
   {
     id: "rustacean",
@@ -45,6 +54,12 @@ export const projects: readonly Project[] = [
     status: "Released",
     technologies: ["Rust", "Python", "npm"],
     repoUrl: "https://github.com/jelome265/Rustacean",
+    showcase: {
+      title: "Install for Codex",
+      description: "The documented project installer validates the skill suite before writing it into a project.",
+      command: "python3 tools/install_skills.py --agent codex --project-root . --apply",
+      detail: "The installer supports a dry run first; the apply command writes and verifies the installed skills.",
+    },
     demo: {
       label: "Project site",
       href: "https://jelome265.github.io/Rustacean/",
