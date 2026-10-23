@@ -32,7 +32,7 @@ export function SiteHeader() {
           <ul className="flex gap-6 text-sm text-muted">
             {navigationItems.map((item) => (
               <li key={item.href}>
-                <a href={item.href} className="hover:text-foreground">
+                <a href={item.href} className="inline-flex min-h-11 items-center underline underline-offset-4 decoration-1 hover:text-foreground">
                   {item.label}
                 </a>
               </li>
@@ -43,7 +43,7 @@ export function SiteHeader() {
         <button
           ref={buttonRef}
           type="button"
-          className="border border-foreground px-3 py-1.5 text-sm md:hidden"
+          className="min-h-11 min-w-11 border border-foreground px-3 text-sm md:hidden"
           aria-expanded={open}
           aria-controls={panelId}
           onClick={() => {

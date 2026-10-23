@@ -21,6 +21,7 @@ export interface Project {
   readonly repoUrl: string;
   readonly demo?: ExternalLink;
   readonly preview?: PreviewImage;
+  readonly featured?: boolean;
 }
 
 export interface FocusGroup {

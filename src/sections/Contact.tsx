@@ -1,7 +1,7 @@
 import { profile } from "../data/profile";
 
 const linkClass =
-  "text-dark-accent underline-offset-4 hover:underline";
+  "inline-flex min-h-11 items-center text-dark-accent underline underline-offset-4 decoration-1 hover:text-dark-text";
 
 export function Contact() {
   return (

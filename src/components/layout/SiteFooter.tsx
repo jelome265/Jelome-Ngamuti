@@ -14,7 +14,7 @@ export function SiteFooter() {
               .filter((item) => item.href !== "#top")
               .map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} className="hover:text-foreground">
+                  <a href={item.href} className="inline-flex min-h-11 items-center underline underline-offset-4 decoration-1 hover:text-foreground">
                     {item.label}
                   </a>
                 </li>
@@ -24,7 +24,7 @@ export function SiteFooter() {
                 href={profile.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-foreground"
+                className="inline-flex min-h-11 items-center underline underline-offset-4 decoration-1 hover:text-foreground"
               >
                 GitHub<span className="sr-only"> (opens in a new tab)</span>
               </a>

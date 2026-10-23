@@ -5,7 +5,7 @@ export function About() {
     <section id="about" aria-labelledby="about-heading" className="scroll-mt-8 border-t border-border">
       <div className="mx-auto grid max-w-[1200px] gap-10 px-5 py-16 md:grid-cols-12 md:gap-12 md:px-12 md:py-24">
         <div className="md:col-span-4">
-          <p className="font-mono text-xs uppercase tracking-widest text-accent">04 · About</p>
+          <p className="font-mono text-xs uppercase tracking-widest text-muted">04 · About</p>
           <h2 id="about-heading" className="mt-3 font-display text-[clamp(1.8rem,4vw,2.75rem)] font-semibold">
             About
           </h2>

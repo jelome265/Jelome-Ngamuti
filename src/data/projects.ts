@@ -4,6 +4,22 @@ import type { Project } from "../types/portfolio";
 // Owner-approved selection: Sitolo, USORA, Rustacean. Copy is pending final Phase 2 approval.
 export const projects: readonly Project[] = [
   {
+    id: "usora",
+    name: "USORA",
+    summary: "A multi-tenant know-your-customer (KYC) platform for identity verification.",
+    contribution:
+      "Rust and Java services. Recent work addresses service test and build failures.",
+    status: "In development",
+    technologies: ["Rust", "Java", "Spring Boot"],
+    note: "No live deployment. Recent test fixes have not been run locally.",
+    repoUrl: "https://github.com/jelome265/usora",
+    featured: true,
+    preview: {
+      src: "/images/usora-preview.png",
+      alt: "Screenshot of the USORA KYC platform showing a facial verification view beside a verification pipeline panel.",
+    },
+  },
+  {
     id: "sitolo",
     name: "Sitolo",
     summary:
@@ -14,21 +30,6 @@ export const projects: readonly Project[] = [
     technologies: ["Rust"],
     note: "Pre-validation. Commercial pricing and segment assumptions are not yet tested.",
     repoUrl: "https://github.com/jelome265/sitolo",
-  },
-  {
-    id: "usora",
-    name: "USORA",
-    summary: "A multi-tenant know-your-customer (KYC) platform for identity verification.",
-    contribution:
-      "Rust and Java services. Recent work addresses service test and build failures.",
-    status: "In development",
-    technologies: ["Rust", "Java", "Spring Boot"],
-    note: "No live deployment. Recent test fixes have not been run locally.",
-    repoUrl: "https://github.com/jelome265/usora",
-    preview: {
-      src: "/images/usora-preview.png",
-      alt: "Screenshot of the USORA KYC platform showing a facial verification view beside a verification pipeline panel.",
-    },
   },
   {
     id: "rustacean",
