@@ -88,7 +88,7 @@ export function PortfolioEvidence({ variant }: PortfolioEvidenceProps) {
   const facePanel = fragments?.[0];
   const pipelinePanel = fragments?.[1];
 
-  if (!preview || !facePanel || !pipelinePanel || !area2Photo || !nchesiPhoto) return null;
+  if (!preview || !facePanel || !pipelinePanel) return null;
 
   const placeImages: readonly EvidenceImage[] = [
     { ...area2Photo, kind: "place" },
@@ -147,7 +147,7 @@ export function PortfolioEvidence({ variant }: PortfolioEvidenceProps) {
       <div className="mt-12 grid grid-cols-12 items-start gap-x-6 gap-y-12 max-md:grid-cols-1">
         {images.map((image, index) => (
           <EvidenceFigure
-            key={`${image.src}-${index}`}
+            key={image.src}
             image={image}
             placement={placements[index] ?? "col-span-full"}
           />
