@@ -1,28 +1,30 @@
 import type { Project } from "../../types/portfolio";
 import { LatestCommit } from "./LatestCommit";
 
-type Side = "text-right" | "picture-left" | "text-left";
-
 interface ProjectEntryProps {
   readonly project: Project;
-  readonly side: Side;
+  // Where the text sits on desktop: the picture (if any) takes the other side.
+  readonly textSide: "left" | "right";
 }
 
-// One project as a full composition: no card, no border; the picture (when there is one) is large.
-export function ProjectEntry({ project, side }: ProjectEntryProps) {
+// One project as a composition. Desktop uses a 12-column grid; phones stack in a single column.
+export function ProjectEntry({ project, textSide }: ProjectEntryProps) {
+  const textColumn =
+    textSide === "right"
+      ? "col-span-5 col-start-8 max-md:col-span-full max-md:col-start-auto"
+      : "col-span-5 col-start-1 max-md:col-span-full max-md:col-start-auto";
+
   const text = (
-    <div className="reveal flex flex-col gap-5 text-[18px]">
+    <div className="reveal flex flex-col gap-5">
       <h3 className="text-[40px] leading-[1.05] font-bold tracking-[-0.02em]">{project.name}</h3>
       <p className="text-[24px] leading-[1.3]">{project.summary}</p>
       <p>{project.contribution}</p>
-      <p className="text-muted">Status: {project.status}.</p>
       {project.note && <p className="text-muted">{project.note}</p>}
-      <p>
-        <span className="text-muted">Built with </span>
-        {project.technologies.join(", ")}
+      <p className="text-[15px] text-muted">
+        {project.status} · {project.technologies.join(", ")}
       </p>
       <LatestCommit repoUrl={project.repoUrl} />
-      <ul className="flex flex-wrap gap-x-6 gap-y-2">
+      <ul className="reveal flex flex-wrap gap-x-8 gap-y-2 text-[15px]">
         <li>
           <a
             href={project.repoUrl}
@@ -30,7 +32,7 @@ export function ProjectEntry({ project, side }: ProjectEntryProps) {
             rel="noopener noreferrer"
             className="inline-flex min-h-11 items-center underline underline-offset-4 decoration-1 hover:text-accent"
           >
-            {project.name} source<span className="sr-only"> (opens in a new tab)</span>
+            Source<span className="sr-only"> for {project.name} (opens in a new tab)</span>
           </a>
         </li>
         {project.demo && (
@@ -41,8 +43,8 @@ export function ProjectEntry({ project, side }: ProjectEntryProps) {
               rel="noopener noreferrer"
               className="inline-flex min-h-11 items-center underline underline-offset-4 decoration-1 hover:text-accent"
             >
-              {project.name} {project.demo.label.toLowerCase()}
-              <span className="sr-only"> (opens in a new tab)</span>
+              {project.demo.label}
+              <span className="sr-only"> for {project.name} (opens in a new tab)</span>
             </a>
           </li>
         )}
@@ -51,46 +53,25 @@ export function ProjectEntry({ project, side }: ProjectEntryProps) {
   );
 
   if (!project.preview) {
-    return (
-      <div
-        className={
-          side === "text-left" ? "md:col-span-6 md:col-start-1" : "md:col-span-6 md:col-start-7"
-        }
-      >
-        {text}
-      </div>
-    );
+    return <div className={textColumn}>{text}</div>;
   }
 
   return (
     <>
-      <figure className="reveal md:col-span-7 md:col-start-1">
+      <figure className="reveal col-span-7 col-start-1 max-md:col-span-full max-md:col-start-auto">
         <div data-ui className="work-picture">
-          <img
-            src={project.preview.src}
-            alt={project.preview.alt}
-            width={529}
-            height={478}
-            className="h-auto w-full"
-          />
+          <img src={project.preview.src} alt={project.preview.alt} width={529} height={478} className="h-auto w-full" />
         </div>
-        <figcaption className="mt-3 text-[15px] text-muted">
-          {project.name}, the interface as its owner captured it.
-        </figcaption>
+        <figcaption className="mt-3 text-[15px] text-muted">{project.name}, as its owner captured it.</figcaption>
         {project.fragments && (
           <div className="mt-6 grid grid-cols-2 gap-4">
             {project.fragments.map((fragment) => (
-              <img
-                key={fragment.src}
-                src={fragment.src}
-                alt={fragment.alt}
-                className="h-auto w-full"
-              />
+              <img key={fragment.src} src={fragment.src} alt={fragment.alt} className="h-auto w-full" />
             ))}
           </div>
         )}
       </figure>
-      <div className="md:col-span-4 md:col-start-9 md:self-end">{text}</div>
+      <div className="col-span-4 col-start-9 self-end max-md:col-span-full max-md:col-start-auto">{text}</div>
     </>
   );
 }

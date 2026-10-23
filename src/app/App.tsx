@@ -1,13 +1,14 @@
-import { useReveal } from "../components/ui/useReveal";
+import { BrowserRouter, Route, Routes } from "react-router";
 import { SiteHeader } from "../components/layout/SiteHeader";
 import { SiteFooter } from "../components/layout/SiteFooter";
-import { Hero } from "../sections/Hero";
-import { SelectedProjects } from "../sections/SelectedProjects";
-import { TechnicalFocus } from "../sections/TechnicalFocus";
-import { About } from "../sections/About";
-import { Contact } from "../sections/Contact";
+import { useReveal } from "../components/ui/useReveal";
+import { ScrollManager } from "./ScrollManager";
+import { HomePage } from "../pages/HomePage";
+import { ProjectsPage } from "../pages/ProjectsPage";
+import { AboutPage } from "../pages/AboutPage";
+import { NotFoundPage } from "../pages/NotFoundPage";
 
-export default function App() {
+function Layout() {
   useReveal();
 
   return (
@@ -20,13 +21,23 @@ export default function App() {
       </a>
       <SiteHeader />
       <main id="main">
-        <Hero />
-        <SelectedProjects />
-        <TechnicalFocus />
-        <About />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
       </main>
       <SiteFooter />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <ScrollManager />
+      <Layout />
+    </BrowserRouter>
   );
 }

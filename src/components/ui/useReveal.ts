@@ -1,8 +1,12 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router";
 
 // Adds .is-visible once each .reveal element enters the viewport.
-// Content stays visible when JavaScript is off, and when reduced motion is requested.
+// Content stays visible when JavaScript is off and when reduced motion is requested.
+// Runs again on every route change, since each page brings new elements.
 export function useReveal(): void {
+  const { pathname } = useLocation();
+
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (!("IntersectionObserver" in window)) return;
@@ -29,5 +33,5 @@ export function useReveal(): void {
       observer.disconnect();
       root.classList.remove("motion-ready");
     };
-  }, []);
+  }, [pathname]);
 }
