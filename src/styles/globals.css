@@ -1,18 +1,19 @@
 @import "tailwindcss";
 
-/* Semantic tokens from docs/design-tokens.md (Tailwind v4 CSS-first theme). */
+/* Semantic tokens: monochrome palette from docs/design-tokens.md (revision 2).
+   Values are drawn from the Dopely and Dyslove palettes; see the token doc for contrast checks. */
 @theme {
-  --color-background: #f7f5f0;
-  --color-surface: #ffffff;
-  --color-foreground: #24231f;
-  --color-muted: #716d64;
-  --color-border: #d8d2c6;
-  --color-accent: #795b36;
-  --color-accent-hover: #5d4328;
-  --color-dark-surface: #24231f;
-  --color-dark-text: #f7f5f0;
-  --color-dark-accent: #c4a574;
-  --color-focus: #245dab;
+  --color-background: #e9ecef; /* Whiteout */
+  --color-surface: #ffffff; /* Clean White */
+  --color-foreground: #111111; /* True Black */
+  --color-muted: #343434; /* Soft Graphite; #777777 fails AA on background */
+  --color-border: #d6d6d6; /* Pale Silver */
+  --color-accent: #343434; /* Soft Graphite */
+  --color-accent-hover: #111111; /* True Black */
+  --color-dark-surface: #111111; /* True Black */
+  --color-dark-text: #ffffff; /* Clean White */
+  --color-dark-accent: #d6d6d6; /* Pale Silver */
+  --color-focus: #111111; /* True Black on light surfaces */
 
   --font-display: Cinzel, Georgia, "Times New Roman", serif;
   --font-sans: Inter, Arial, system-ui, sans-serif;
@@ -36,6 +37,11 @@
   :focus-visible {
     outline: 2px solid var(--color-focus);
     outline-offset: 2px;
+  }
+
+  /* Focus indicator on dark surfaces (contact band). */
+  .on-dark :focus-visible {
+    outline-color: var(--color-dark-text);
   }
 }
 

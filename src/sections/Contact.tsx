@@ -8,7 +8,7 @@ export function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="scroll-mt-8 bg-dark-surface text-dark-text"
+      className="on-dark scroll-mt-8 bg-dark-surface text-dark-text"
     >
       <div className="mx-auto max-w-[1200px] px-5 py-16 md:px-12 md:py-24">
         <p className="font-mono text-xs uppercase tracking-widest text-dark-accent">05 · Contact</p>
