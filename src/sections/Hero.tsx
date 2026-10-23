@@ -25,7 +25,7 @@ export function Hero() {
         </div>
       </div>
 
-      <h1 className="hero-name reveal my-auto text-[clamp(3rem,11.2vw,10rem)] leading-[0.9] font-bold tracking-[-0.02em] whitespace-nowrap">
+      <h1 className="hero-name reveal my-auto text-[clamp(3rem,11.2vw,10rem)] leading-[0.9] font-bold tracking-[-0.02em] whitespace-nowrap max-md:text-[clamp(2rem,11.2vw,2.75rem)] max-md:whitespace-normal">
         {profile.name}
       </h1>
       <WorkStatement />
