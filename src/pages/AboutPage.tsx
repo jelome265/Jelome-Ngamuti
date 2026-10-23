@@ -1,4 +1,5 @@
 import { PageIntro } from "../components/ui/PageIntro";
+import { PictureSlot } from "../components/ui/PictureSlot";
 import { aboutContent } from "../data/about";
 import { profile } from "../data/profile";
 import { focusGroups } from "../data/focus";
@@ -34,6 +35,10 @@ export function AboutPage() {
           ))}
           <p className="reveal mb-8 break-inside-avoid">Areas I care about: {aboutContent.areas.join("; ")}.</p>
         </div>
+      </section>
+
+      <section aria-label="Picture" className="mx-auto max-w-[1280px] px-[32px] pb-[120px] max-md:px-[18px]">
+        <PictureSlot label="a place or work of the owner" ratio="16/9" />
       </section>
 
       <section aria-labelledby="focus-heading" className="mx-auto max-w-[1280px] px-[32px] pb-[120px] max-md:px-[18px]">
