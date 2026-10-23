@@ -5,9 +5,16 @@ export interface ExternalLink {
   readonly href: string;
 }
 
+export interface ImageCredit {
+  readonly label: string;
+  readonly href: string;
+}
+
 export interface PreviewImage {
   readonly src: string;
   readonly alt: string;
+  readonly caption?: string;
+  readonly credit?: ImageCredit;
 }
 
 export interface Project {
@@ -23,6 +30,7 @@ export interface Project {
   readonly preview?: PreviewImage;
   readonly featured?: boolean;
   readonly fragments?: readonly PreviewImage[];
+  readonly contextPhotos?: readonly PreviewImage[];
 }
 
 export interface FocusGroup {
