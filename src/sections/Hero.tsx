@@ -9,11 +9,17 @@ export function Hero() {
     <section className="mx-auto flex min-h-[88svh] max-w-[1280px] flex-col justify-between px-[32px] pt-10 pb-8 max-md:min-h-[72svh] max-md:px-[18px]">
       <div className="reveal max-w-[36ch]">
         <p className="text-[18px]">{profile.positioning}</p>
-        <div className="reveal mt-6 flex flex-wrap gap-3">
-          <Link to="/projects" className="inline-flex min-h-11 items-center bg-foreground px-5 text-[15px] font-medium text-surface transition-colors duration-200 hover:bg-accent">
+        <div className="reveal mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <Link
+            to="/projects"
+            className="inline-flex min-h-11 items-center bg-foreground px-5 text-[15px] font-medium text-surface transition-colors duration-200 hover:bg-accent"
+          >
             View projects
           </Link>
-          <Link to="/about" className="inline-flex min-h-11 items-center border border-foreground px-5 text-[15px] font-medium transition-colors duration-200 hover:bg-foreground hover:text-surface">
+          <Link
+            to="/about"
+            className="inline-flex min-h-11 items-center text-[15px] font-medium underline underline-offset-4 decoration-1 hover:text-accent"
+          >
             About
           </Link>
         </div>
