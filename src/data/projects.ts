@@ -24,12 +24,10 @@ export const projects: readonly Project[] = [
       {
         src: "/images/usora-face-panel.png",
         alt: "Crop of the USORA screenshot: the facial verification panel.",
-        caption: "Facial verification panel.",
       },
       {
         src: "/images/usora-pipeline-panel.png",
         alt: "Crop of the USORA screenshot: the verification pipeline panel.",
-        caption: "Verification pipeline panel.",
       },
     ],
   },
