@@ -22,17 +22,20 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="border-b border-border bg-background">
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between px-5 py-4 md:px-12">
-        <a href="#top" className="font-display text-lg font-semibold text-foreground">
+    <header className="bg-background">
+      <div className="flex items-center justify-between px-[18px] py-4 md:px-[24px]">
+        <a href="#top" className="text-lg font-medium text-foreground">
           {profile.name}
         </a>
 
         <nav aria-label="Primary" className="hidden md:block">
-          <ul className="flex gap-6 text-sm text-muted">
+          <ul className="flex gap-7 text-[15px]">
             {navigationItems.map((item) => (
               <li key={item.href}>
-                <a href={item.href} className="inline-flex min-h-11 items-center underline underline-offset-4 decoration-1 hover:text-foreground">
+                <a
+                  href={item.href}
+                  className="inline-flex min-h-11 items-center underline underline-offset-4 decoration-1 hover:text-accent"
+                >
                   {item.label}
                 </a>
               </li>
@@ -43,29 +46,25 @@ export function SiteHeader() {
         <button
           ref={buttonRef}
           type="button"
-          className="min-h-11 min-w-11 border border-foreground px-3 text-sm md:hidden"
+          className="min-h-11 min-w-11 bg-foreground px-4 text-[15px] text-surface md:hidden"
           aria-expanded={open}
           aria-controls={panelId}
           onClick={() => {
             setOpen((value) => !value);
           }}
         >
-          {open ? "Close menu" : "Menu"}
+          {open ? "Close" : "Menu"}
         </button>
       </div>
 
       {open && (
-        <nav
-          id={panelId}
-          aria-label="Mobile"
-          className="border-t border-border bg-surface md:hidden"
-        >
-          <ul className="mx-auto max-w-[1200px] px-5">
+        <nav id={panelId} aria-label="Mobile" className="bg-surface md:hidden">
+          <ul className="px-[18px] py-2">
             {navigationItems.map((item) => (
-              <li key={item.href} className="border-b border-border last:border-b-0">
+              <li key={item.href}>
                 <a
                   href={item.href}
-                  className="flex min-h-11 items-center text-lg text-foreground"
+                  className="flex min-h-11 items-center text-[24px] text-foreground"
                   onClick={() => {
                     setOpen(false);
                   }}

@@ -1,25 +1,36 @@
-import { ProjectCard } from "../components/ui/ProjectCard";
+import { ProjectEntry } from "../components/ui/ProjectEntry";
 import { projects } from "../data/projects";
 
+// Each entry takes a different place in the grid, so the page has movement without ornament.
 export function SelectedProjects() {
   return (
-    <section
-      id="projects"
-      aria-labelledby="projects-heading"
-      className="scroll-mt-8 border-t border-border"
-    >
-      <div className="mx-auto max-w-[1200px] px-5 py-16 md:px-12 md:py-24">
-        <p className="font-mono text-xs uppercase tracking-widest text-muted">01 · Projects</p>
-        <h2 id="projects-heading" className="mt-3 font-display text-[clamp(1.8rem,4vw,2.75rem)] font-semibold">
-          Selected projects
-        </h2>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {projects.map((project, index) => (
-            <div key={project.id} className={project.featured ? "md:col-span-2" : undefined}>
-              <ProjectCard project={project} index={index + 1} />
-            </div>
-          ))}
-        </div>
+    <section id="projects" aria-labelledby="work-heading" className="scroll-mt-6 px-[24px] pt-[160px] pb-[120px]">
+      <div className="reveal text-[clamp(3rem,12.4vw,11rem)] leading-[0.9] tracking-[-0.02em]">
+        <h2 id="work-heading" className="inline font-bold">
+          Work:
+        </h2>{" "}
+        {projects.map((project, index) => (
+          <span key={project.id}>
+            <a
+              href={`#${project.id}`}
+              className="underline-offset-[0.12em] decoration-2 hover:text-accent hover:underline"
+            >
+              {project.name}
+            </a>
+            {index < projects.length - 1 ? ", " : "."}
+          </span>
+        ))}
+      </div>
+
+      <div className="mt-[120px] grid gap-y-[120px] md:grid-cols-12 md:gap-x-6">
+        {projects.map((project, index) => (
+          <div key={project.id} id={project.id} className="contents scroll-mt-6">
+            <ProjectEntry
+              project={project}
+              side={project.preview ? "picture-left" : index % 2 === 0 ? "text-right" : "text-left"}
+            />
+          </div>
+        ))}
       </div>
     </section>
   );

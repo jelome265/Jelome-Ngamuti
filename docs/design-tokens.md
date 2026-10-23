@@ -26,25 +26,24 @@ Revision 1 (superseded): background #F7F5F0, surface #FFFFFF, foreground #24231F
 
 Do not communicate state through color alone. Verify final foreground/background pairs with a contrast checker before release; use WCAG AA as the minimum.
 
-## Typography
+## Typography (revision 2: taste direction)
+
+Revision 2 replaces Cinzel, Inter and JetBrains Mono with General Sans (Fontshare, 400/500/700). One typeface, no monospace, no eyebrow labels. Revision 1 is superseded.
 
 | Role | Family | Weight | Guidance |
 |---|---|---|---|
-| Display/headings | Cinzel, Georgia, serif | 500–600 | Use selectively for a restrained medieval influence |
-| Body/UI | Inter, Arial, sans-serif | 400–600 | Default for readability and navigation |
-| Technical labels/code | JetBrains Mono, monospace | 400–500 | Use for short technical metadata, not long paragraphs |
+| Display, headings, body, UI | General Sans, Helvetica Neue, Arial, system-ui | 400, 500, 700 | Display 700 at -0.02em, leading 0.9 |
 
-Prefer self-hosted font files when licensing and asset availability permit; always define system fallbacks. Avoid loading unnecessary weights.
+Loaded from `api.fontshare.com` (preconnect in `index.html`). Fallbacks are defined; a page with the fallback still reads correctly.
 
-Type scale:
-- Body: 16px / 1.7 line-height.
-- Small/supporting text: 14px / 1.5.
-- H1: clamp(2.5rem, 6vw, 4.5rem).
-- H2: clamp(1.8rem, 4vw, 2.75rem).
-- H3: 1.25rem–1.5rem.
-- Eyebrow/technical label: 12px–13px with restrained letter spacing.
+Five type sizes only:
+- 15px: small notes, navigation, metadata.
+- 18px: body text.
+- 24px: lead text, project summaries, contact links, technical focus rows.
+- 40px: section headings and project names.
+- Display: clamp(3rem, 12.4vw, 11rem): hero name, the Work statement, the footer email.
 
-Long-form text should use a comfortable line length of approximately 60–75 characters.
+Body text is in the full ink. Muted ink is for secondary notes only.
 
 ## Spacing scale
 

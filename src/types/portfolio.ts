@@ -22,6 +22,7 @@ export interface Project {
   readonly demo?: ExternalLink;
   readonly preview?: PreviewImage;
   readonly featured?: boolean;
+  readonly fragments?: readonly PreviewImage[];
 }
 
 export interface FocusGroup {

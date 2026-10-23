@@ -1,42 +1,41 @@
 import { profile } from "../data/profile";
 
-const stages = ["Design", "Build", "Verify"] as const;
-
+// Name across the middle; the supporting sentence and action sit in the top-left corner,
+// the links in the bottom row. The name settles slightly as the first screen leaves.
 export function Hero() {
   return (
-    <section
-      id="top"
-      className="mx-auto max-w-[1200px] scroll-mt-8 px-5 py-16 md:px-12 md:py-28"
-    >
-      <p className="font-mono text-xs uppercase tracking-widest text-muted">{profile.eyebrow}</p>
-      <h1 className="mt-4 font-display text-[clamp(3rem,9vw,7rem)] leading-[1] font-semibold">
-        {profile.name}
-      </h1>
-      <p className="mt-6 max-w-[720px] text-xl">{profile.positioning}</p>
-      <div className="mt-10 flex flex-wrap gap-3">
-        <a
-          href="#projects"
-          className="bg-accent px-5 py-3 text-sm font-medium text-surface transition-colors duration-200 hover:bg-accent-hover"
-        >
-          Explore selected work
-        </a>
-        <a
-          href={profile.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="border border-accent px-5 py-3 text-sm font-medium text-accent transition-colors duration-200 hover:border-accent-hover hover:text-accent-hover"
-        >
-          GitHub profile<span className="sr-only"> (opens in a new tab)</span>
-        </a>
+    <section id="top" className="flex min-h-[92svh] flex-col justify-between px-[18px] pt-6 pb-[24px] md:px-[24px]">
+      <div className="flex flex-wrap items-start justify-between gap-6">
+        <div className="max-w-[36ch]">
+          <p className="text-lg">{profile.positioning}</p>
+          <a
+            href="#projects"
+            className="mt-4 inline-flex min-h-11 items-center bg-foreground px-5 py-3 text-[15px] font-medium text-surface transition-colors duration-200 hover:bg-accent"
+          >
+            Explore work
+          </a>
+        </div>
       </div>
 
-      <ol aria-hidden="true" className="mt-16 grid max-w-[720px] grid-cols-3 border-t border-border pt-4 font-mono text-xs uppercase tracking-widest text-muted">
-        {stages.map((stage, index) => (
-          <li key={stage}>
-            <span className="text-muted">{String(index + 1).padStart(2, "0")}</span> {stage}
+      <h1 className="hero-name reveal my-auto text-[clamp(3rem,12.4vw,11rem)] leading-[0.9] font-bold tracking-[-0.02em] whitespace-nowrap">
+        {profile.name}
+      </h1>
+
+      <div className="flex flex-wrap items-end justify-between gap-6 text-[15px]">
+        <p>Lilongwe, Malawi</p>
+        <ul className="flex flex-wrap gap-6">
+          <li>
+            <a href={profile.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center underline underline-offset-4 decoration-1 hover:text-accent">
+              GitHub<span className="sr-only"> (opens in a new tab)</span>
+            </a>
           </li>
-        ))}
-      </ol>
+          <li>
+            <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center underline underline-offset-4 decoration-1 hover:text-accent">
+              LinkedIn<span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </section>
   );
 }

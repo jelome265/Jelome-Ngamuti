@@ -1,38 +1,29 @@
 import { profile } from "../data/profile";
 
-const linkClass =
-  "inline-flex min-h-11 items-center text-dark-accent underline underline-offset-4 decoration-1 hover:text-dark-text";
-
+// Contact is a plain list of real destinations. No form: there is no backend to receive one.
 export function Contact() {
   return (
-    <section
-      id="contact"
-      aria-labelledby="contact-heading"
-      className="on-dark scroll-mt-8 bg-dark-surface text-dark-text"
-    >
-      <div className="mx-auto max-w-[1200px] px-5 py-16 md:px-12 md:py-24">
-        <p className="font-mono text-xs uppercase tracking-widest text-dark-accent">05 · Contact</p>
-        <h2 id="contact-heading" className="mt-3 font-display text-[clamp(1.8rem,4vw,2.75rem)] font-semibold">
-          Contact
-        </h2>
-        <ul className="mt-8 flex flex-wrap gap-6">
-          <li>
-            <a href={`mailto:${profile.email}`} className={linkClass}>
-              {profile.email}
-            </a>
-          </li>
-          <li>
-            <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
-              LinkedIn<span className="sr-only"> (opens in a new tab)</span>
-            </a>
-          </li>
-          <li>
-            <a href={profile.githubUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
-              GitHub<span className="sr-only"> (opens in a new tab)</span>
-            </a>
-          </li>
-        </ul>
-      </div>
+    <section id="contact" aria-labelledby="contact-heading" className="scroll-mt-6 px-[24px] pt-[120px] pb-[60px]">
+      <h2 id="contact-heading" className="reveal text-[40px] leading-[1.1] font-bold tracking-[-0.02em]">
+        Contact
+      </h2>
+      <ul className="mt-[72px] flex flex-col gap-2 text-[24px]">
+        <li>
+          <a href={`mailto:${profile.email}`} className="inline-flex min-h-11 items-center underline underline-offset-[0.12em] decoration-2 hover:text-accent">
+            {profile.email}
+          </a>
+        </li>
+        <li>
+          <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center underline underline-offset-[0.12em] decoration-2 hover:text-accent">
+            LinkedIn<span className="sr-only"> (opens in a new tab)</span>
+          </a>
+        </li>
+        <li>
+          <a href={profile.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center underline underline-offset-[0.12em] decoration-2 hover:text-accent">
+            GitHub<span className="sr-only"> (opens in a new tab)</span>
+          </a>
+        </li>
+      </ul>
     </section>
   );
 }

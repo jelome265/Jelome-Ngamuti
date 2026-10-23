@@ -1,36 +1,26 @@
 import { copyrightYear, profile } from "../../data/profile";
-import { navigationItems } from "./navigation";
 
+// Full-bleed field: the contact line is the headline, set to the width of the page.
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border">
-      <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-4 px-5 py-8 text-sm text-muted md:px-12">
-        <p className="text-foreground">
-          © {copyrightYear} {profile.name}
-        </p>
-        <nav aria-label="Footer">
-          <ul className="flex flex-wrap gap-x-6 gap-y-2">
-            {navigationItems
-              .filter((item) => item.href !== "#top")
-              .map((item) => (
-                <li key={item.href}>
-                  <a href={item.href} className="inline-flex min-h-11 items-center underline underline-offset-4 decoration-1 hover:text-foreground">
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            <li>
-              <a
-                href={profile.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center underline underline-offset-4 decoration-1 hover:text-foreground"
-              >
-                GitHub<span className="sr-only"> (opens in a new tab)</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+    <footer id="footer" className="on-dark bg-dark-surface text-dark-text">
+      <div className="flex min-h-[80svh] flex-col justify-between px-[24px] py-10">
+        <div className="flex flex-wrap items-start justify-between gap-6 text-[15px]">
+          <p>
+            © {copyrightYear} {profile.name}
+          </p>
+          <p>Lilongwe, Malawi</p>
+          <a href="#top" className="inline-flex min-h-11 items-center underline underline-offset-4 decoration-1">
+            Back to top
+          </a>
+        </div>
+
+        <a
+          href={`mailto:${profile.email}`}
+          className="mt-24 block text-[clamp(3rem,12.4vw,11rem)] leading-[0.9] font-bold tracking-[-0.03em] break-all underline-offset-[0.08em] decoration-2 hover:underline"
+        >
+          {profile.email}
+        </a>
       </div>
     </footer>
   );

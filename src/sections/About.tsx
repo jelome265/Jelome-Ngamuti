@@ -1,37 +1,36 @@
 import { aboutContent } from "../data/about";
 
+// Body text in two columns; the facts a scanning reader wants are highlighted with a tone step.
+const highlights = ["Malawi", "Computer Science", "backend engineering", "reliable software", "African businesses"];
+
+function withHighlights(text: string) {
+  const pattern = new RegExp(`(${highlights.join("|")})`, "g");
+  return text.split(pattern).map((part, index) =>
+    highlights.includes(part) ? (
+      <mark key={index} className="bg-border text-foreground">
+        {part}
+      </mark>
+    ) : (
+      <span key={index}>{part}</span>
+    ),
+  );
+}
+
 export function About() {
   return (
-    <section id="about" aria-labelledby="about-heading" className="scroll-mt-8 border-t border-border">
-      <div className="mx-auto grid max-w-[1200px] gap-10 px-5 py-16 md:grid-cols-12 md:gap-12 md:px-12 md:py-24">
-        <div className="md:col-span-4">
-          <p className="font-mono text-xs uppercase tracking-widest text-muted">04 · About</p>
-          <h2 id="about-heading" className="mt-3 font-display text-[clamp(1.8rem,4vw,2.75rem)] font-semibold">
-            About
-          </h2>
-        </div>
-        <div className="max-w-[720px] space-y-6 md:col-span-8">
-          <p>{aboutContent.intro}</p>
-          <p className="text-muted">{aboutContent.currentStudy}</p>
-
-          <div>
-            <h3 className="font-display text-lg font-semibold">Working principles</h3>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-muted">
-              {aboutContent.principles.map((principle) => (
-                <li key={principle}>{principle}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-display text-lg font-semibold">Areas I care about</h3>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-muted">
-              {aboutContent.areas.map((area) => (
-                <li key={area}>{area}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
+    <section id="about" aria-labelledby="about-heading" className="scroll-mt-6 px-[24px] py-[120px]">
+      <h2 id="about-heading" className="reveal text-[40px] leading-[1.1] font-bold tracking-[-0.02em]">
+        About
+      </h2>
+      <div className="mt-[72px] columns-1 gap-x-10 text-[18px] leading-[1.4] md:columns-2 md:text-[24px] md:leading-[1.35]">
+        <p className="reveal mb-6 break-inside-avoid">{withHighlights(aboutContent.intro)}</p>
+        <p className="reveal mb-6 break-inside-avoid text-muted">{withHighlights(aboutContent.currentStudy)}</p>
+        {aboutContent.principles.map((principle) => (
+          <p key={principle} className="reveal mb-6 break-inside-avoid">{withHighlights(principle)}</p>
+        ))}
+        <p className="reveal mb-6 break-inside-avoid">
+          Areas I care about: {aboutContent.areas.join("; ")}.
+        </p>
       </div>
     </section>
   );

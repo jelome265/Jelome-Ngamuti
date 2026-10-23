@@ -1,30 +1,28 @@
 @import "tailwindcss";
 
-/* Semantic tokens: monochrome palette from docs/design-tokens.md (revision 2).
-   Values are drawn from the Dopely and Dyslove palettes; see the token doc for contrast checks. */
+/* Tokens: monochrome palette (kept from design-tokens rev 2) and General Sans (taste direction). */
 @theme {
-  --color-background: #e9ecef; /* Whiteout */
-  --color-surface: #ffffff; /* Clean White */
-  --color-foreground: #111111; /* True Black */
-  --color-muted: #343434; /* Soft Graphite; #777777 fails AA on background */
-  --color-border: #d6d6d6; /* Pale Silver */
-  --color-accent: #343434; /* Soft Graphite */
-  --color-accent-hover: #111111; /* True Black */
-  --color-dark-surface: #111111; /* True Black */
-  --color-dark-text: #ffffff; /* Clean White */
-  --color-dark-accent: #d6d6d6; /* Pale Silver */
-  --color-focus: #111111; /* True Black on light surfaces */
+  --color-background: #e9ecef; /* ground */
+  --color-surface: #ffffff; /* raised field */
+  --color-foreground: #111111; /* ink */
+  --color-muted: #343434; /* secondary text, still AA on ground */
+  --color-border: #d6d6d6; /* tone step for highlights, not a rule */
+  --color-accent: #343434;
+  --color-accent-hover: #111111;
+  --color-dark-surface: #111111; /* full-bleed field */
+  --color-dark-text: #ffffff;
+  --color-dark-accent: #d6d6d6;
+  --color-focus: #111111;
 
-  --font-display: Cinzel, Georgia, "Times New Roman", serif;
-  --font-sans: Inter, Arial, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: "General Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-sans: "General Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
 }
 
 @layer base {
   html {
     font-family: var(--font-sans);
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.5;
     color-scheme: light;
     -webkit-text-size-adjust: 100%;
   }
@@ -32,26 +30,72 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-size: 18px;
   }
 
   :focus-visible {
     outline: 2px solid var(--color-focus);
-    outline-offset: 2px;
+    outline-offset: 3px;
   }
 
-  /* Focus indicator on dark surfaces (contact band). */
   .on-dark :focus-visible {
     outline-color: var(--color-dark-text);
   }
+}
+
+/* Scroll-linked signature move. Static where scroll timelines are unsupported. */
+@supports (animation-timeline: view()) {
+  @keyframes wordmark-settle {
+    to {
+      transform: scale(0.94);
+    }
+  }
+
+  @keyframes picture-drift {
+    from {
+      transform: translateY(4%);
+    }
+    to {
+      transform: translateY(-4%);
+    }
+  }
+
+  .hero-name {
+    animation: wordmark-settle linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 100%;
+  }
+
+  [data-ui].work-picture {
+    animation: picture-drift linear both;
+    animation-timeline: view();
+  }
+}
+
+/* Entrance: content is visible unless the script has started and motion is allowed. */
+.motion-ready .reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.reveal {
+  transition:
+    opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
 }
 
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+    animation: none !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .motion-ready .reveal:not(.is-visible) {
+    opacity: 1;
+    transform: none;
   }
 }

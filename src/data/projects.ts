@@ -18,6 +18,10 @@ export const projects: readonly Project[] = [
       src: "/images/usora-preview.png",
       alt: "Screenshot of the USORA KYC platform showing a facial verification view beside a verification pipeline panel.",
     },
+    fragments: [
+      { src: "/images/usora-face-panel.png", alt: "Crop of the USORA screenshot: the facial verification panel." },
+      { src: "/images/usora-pipeline-panel.png", alt: "Crop of the USORA screenshot: the verification pipeline panel." },
+    ],
   },
   {
     id: "sitolo",
