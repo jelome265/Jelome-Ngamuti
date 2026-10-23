@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 type State =
   | { readonly status: "loading" }
-  | { readonly status: "ready"; readonly sha: string; readonly date: string; readonly message: string }
+  | { readonly status: "ready"; readonly sha: string; readonly url: string; readonly date: string; readonly message: string }
   | { readonly status: "unavailable" };
 
 interface LatestCommitProps {
@@ -79,6 +79,7 @@ export function LatestCommit({ repoUrl }: LatestCommitProps) {
         setState({
           status: "ready",
           sha: commit.sha.slice(0, 7),
+          url: `https://github.com/${path}/commit/${commit.sha}`,
           date: new Date(commit.commit.author.date).toISOString().slice(0, 10),
           message: commit.commit.message.split("\n")[0] ?? "",
         });
@@ -99,14 +100,23 @@ export function LatestCommit({ repoUrl }: LatestCommitProps) {
   }, [repoUrl]);
 
   if (state.status === "loading") {
-    return <p className="text-[15px] text-muted">Evidence: reading the latest commit…</p>;
+    return <p className="text-[15px] text-muted" aria-live="polite">Evidence: reading the latest commit…</p>;
   }
   if (state.status === "unavailable") {
-    return <p className="text-[15px] text-muted">Evidence: open the repository below for its current history.</p>;
+    return <p className="text-[15px] text-muted" aria-live="polite">Evidence: open the repository below for its current history.</p>;
   }
   return (
     <p className="text-[15px] text-muted">
-      Evidence: latest commit {state.date} · <span>{state.sha}</span> · {state.message}
+      Evidence: latest commit {state.date} ·{" "}
+      <a
+        href={state.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline underline-offset-2 hover:text-accent"
+      >
+        {state.sha}
+      </a>
+      {" · "}{state.message}
     </p>
   );
 }
