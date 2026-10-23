@@ -50,6 +50,8 @@ function EvidenceFigure({
   readonly image: EvidenceImage;
   readonly placement: string;
 }) {
+  const hasCaption = Boolean(image.caption || image.credit);
+
   return (
     <figure className={`reveal m-0 ${placement}`}>
       {image.kind === "interface" ? (
@@ -73,10 +75,12 @@ function EvidenceFigure({
           className="aspect-[4/3] w-full object-cover"
         />
       )}
-      <figcaption className="mt-3 text-[15px] leading-[1.45]">
-        <span className="block">{image.caption ?? "Project interface detail."}</span>
-        {creditFor(image)}
-      </figcaption>
+      {hasCaption && (
+        <figcaption className="mt-3 text-[15px] leading-[1.45]">
+          {image.caption && <span className="block">{image.caption}</span>}
+          {creditFor(image)}
+        </figcaption>
+      )}
     </figure>
   );
 }
