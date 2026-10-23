@@ -44,6 +44,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Draw subject-specific design directions
+        run: node .claude/skills/design-taste-frontend/scripts/draw.mjs --sector personal-portfolio --brief "Jelome Ngamuti is a Malawi-based third-year Computer Science student building reliable software, with evidence from Sitolo, USORA and Rustacean." --sections work,about,contact --have product-ui --keep palette,type --seed 265 --options 3
+
       - name: Locate installed browser
         shell: bash
         run: |
