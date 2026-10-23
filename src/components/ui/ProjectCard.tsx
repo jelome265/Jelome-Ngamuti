@@ -17,6 +17,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <img
           src={project.preview.src}
           alt={project.preview.alt}
+          width={529}
+          height={478}
           loading="lazy"
           className="mt-4 h-auto w-full border border-border"
         />

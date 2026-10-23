@@ -3,6 +3,7 @@ import { SiteFooter } from "../components/layout/SiteFooter";
 import { Hero } from "../sections/Hero";
 import { SelectedProjects } from "../sections/SelectedProjects";
 import { TechnicalFocus } from "../sections/TechnicalFocus";
+import { About } from "../sections/About";
 import { Contact } from "../sections/Contact";
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
         <Hero />
         <SelectedProjects />
         <TechnicalFocus />
+        <About />
         <Contact />
       </main>
       <SiteFooter />

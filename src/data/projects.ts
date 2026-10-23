@@ -25,6 +25,10 @@ export const projects: readonly Project[] = [
     technologies: ["Rust", "Java", "Spring Boot"],
     note: "No live deployment. Recent test fixes have not been run locally.",
     repoUrl: "https://github.com/jelome265/usora",
+    preview: {
+      src: "/images/usora-preview.png",
+      alt: "Screenshot of the USORA KYC platform showing a facial verification view beside a verification pipeline panel.",
+    },
   },
   {
     id: "rustacean",
