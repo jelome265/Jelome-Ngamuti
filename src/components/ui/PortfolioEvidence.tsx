@@ -82,22 +82,32 @@ function EvidenceFigure({
 }
 
 export function PortfolioEvidence({ variant }: PortfolioEvidenceProps) {
-  if (!usora?.preview || !usora.fragments || usora.fragments.length < 2) return null;
+  const preview = usora?.preview;
+  const fragments = usora?.fragments;
+  const [area2Photo, nchesiPhoto] = lilongwePhotos;
+  const facePanel = fragments?.[0];
+  const pipelinePanel = fragments?.[1];
 
-  const placeImages: readonly EvidenceImage[] = lilongwePhotos.map((image) => ({
-    ...image,
-    kind: "place",
-  }));
-  const interfaceImages: readonly EvidenceImage[] = [
-    { ...usora.preview, kind: "interface" },
-    { ...usora.fragments[0], kind: "interface" },
-    { ...usora.fragments[1], kind: "interface" },
+  if (!preview || !facePanel || !pipelinePanel || !area2Photo || !nchesiPhoto) return null;
+
+  const placeImages: readonly EvidenceImage[] = [
+    { ...area2Photo, kind: "place" },
+    { ...nchesiPhoto, kind: "place" },
   ];
+  const interfaceImages: readonly EvidenceImage[] = [
+    { ...preview, kind: "interface" },
+    { ...facePanel, kind: "interface" },
+    { ...pipelinePanel, kind: "interface" },
+  ];
+
+  const [area2, nchesi] = placeImages;
+  const [usoraPreview, usoraFace, usoraPipeline] = interfaceImages;
+  if (!area2 || !nchesi || !usoraPreview || !usoraFace || !usoraPipeline) return null;
 
   const images: readonly EvidenceImage[] =
     variant === "home"
-      ? [placeImages[0], interfaceImages[0], interfaceImages[1], placeImages[1]]
-      : [placeImages[1], interfaceImages[2], interfaceImages[0], placeImages[0], interfaceImages[1]];
+      ? [area2, usoraPreview, usoraFace, nchesi]
+      : [nchesi, usoraPipeline, usoraPreview, area2, usoraFace];
 
   const placements =
     variant === "home"
@@ -136,7 +146,11 @@ export function PortfolioEvidence({ variant }: PortfolioEvidenceProps) {
 
       <div className="mt-12 grid grid-cols-12 items-start gap-x-6 gap-y-12 max-md:grid-cols-1">
         {images.map((image, index) => (
-          <EvidenceFigure key={`${image.src}-${index}`} image={image} placement={placements[index]} />
+          <EvidenceFigure
+            key={`${image.src}-${index}`}
+            image={image}
+            placement={placements[index] ?? "col-span-full"}
+          />
         ))}
       </div>
     </section>
