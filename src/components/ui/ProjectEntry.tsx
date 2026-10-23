@@ -1,5 +1,6 @@
 import type { PreviewImage, Project } from "../../types/portfolio";
 import { LatestCommit } from "./LatestCommit";
+import { ProjectShowcase } from "./ProjectShowcase";
 
 interface ProjectEntryProps {
   readonly project: Project;
@@ -67,7 +68,7 @@ function ContextImage({ image }: { readonly image: PreviewImage }) {
         loading="lazy"
         decoding="async"
         width={960}
-        height={671}
+        height={720}
         className="aspect-[4/3] w-full object-cover"
       />
       <ImageCaption image={image} fallback="Lilongwe, Malawi." />
@@ -75,7 +76,7 @@ function ContextImage({ image }: { readonly image: PreviewImage }) {
   );
 }
 
-// One project as a composition. Desktop pairs evidence with its explanation; phones stack the same content.
+// Each entry pairs verifiable project evidence with its explanation; phone layouts stack both columns.
 export function ProjectEntry({ project, textSide }: ProjectEntryProps) {
   const textColumn =
     textSide === "right"
@@ -127,7 +128,7 @@ export function ProjectEntry({ project, textSide }: ProjectEntryProps) {
   if (project.preview) {
     return (
       <>
-        <figure className={`reveal m-0 min-w-0 ${imageColumn}`}>
+        <div className={imageColumn}>
           <InterfaceImage image={project.preview} fallback={`${project.name} project image.`} />
           {project.fragments && project.fragments.length > 0 && (
             <div className="mt-6 grid grid-cols-2 items-start gap-4 max-md:grid-cols-1">
@@ -136,7 +137,18 @@ export function ProjectEntry({ project, textSide }: ProjectEntryProps) {
               ))}
             </div>
           )}
-        </figure>
+        </div>
+        <div className={`self-end ${textColumn}`}>{text}</div>
+      </>
+    );
+  }
+
+  if (project.showcase) {
+    return (
+      <>
+        <div className={imageColumn}>
+          <ProjectShowcase content={project.showcase} />
+        </div>
         <div className={`self-end ${textColumn}`}>{text}</div>
       </>
     );
