@@ -1,11 +1,11 @@
 import { Link } from "react-router";
 import { copyrightYear, profile } from "../../data/profile";
 
-// Full-bleed field. The email is the headline on every page, so contact is always one step away.
+// Full-bleed contact area. The email is the visual anchor without making the footer a mostly empty screen.
 export function SiteFooter() {
   return (
     <footer id="contact" className="on-dark bg-dark-surface text-dark-text">
-      <div className="mx-auto flex min-h-[78svh] max-w-[1280px] flex-col justify-between px-[32px] py-10 max-md:px-[18px]">
+      <div className="mx-auto flex min-h-[58svh] max-w-[1280px] flex-col justify-between px-[32px] py-10 max-md:min-h-[55svh] max-md:px-[18px]">
         <div className="reveal flex flex-wrap items-start justify-between gap-6 text-[15px]">
           <p>
             © {copyrightYear} {profile.name}
