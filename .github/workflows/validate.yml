@@ -15,9 +15,9 @@ concurrency:
 
 jobs:
   validate:
-    name: Typecheck, lint and build
+    name: Typecheck, lint, build and inspect
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
       - name: Check out source
@@ -43,3 +43,53 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Locate installed browser
+        shell: bash
+        run: |
+          for candidate in google-chrome chromium chromium-browser microsoft-edge; do
+            if command -v "$candidate" >/dev/null 2>&1; then
+              echo "CHROME_PATH=$(command -v "$candidate")" >> "$GITHUB_ENV"
+              exit 0
+            fi
+          done
+          echo "::error::Chrome, Chromium or Edge is required for the design inspector."
+          exit 1
+
+      - name: Start production preview
+        shell: bash
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/portfolio-preview.log 2>&1 &
+          echo "$!" > /tmp/portfolio-preview.pid
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4173/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/portfolio-preview.log
+          exit 1
+
+      - name: Inspect home, projects and about at desktop, tablet and phone widths
+        shell: bash
+        run: |
+          status=0
+          while IFS='|' read -r name route; do
+            if ! node .claude/skills/design-taste-frontend/scripts/inspect.mjs "http://127.0.0.1:4173$route" --out ".taste-skill/inspect/$name"; then
+              status=1
+            fi
+          done <<'ROUTES'
+          home|/
+          projects|/projects
+          about|/about
+          ROUTES
+          exit "$status"
+
+      - name: Upload design inspection screenshots and reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-design-inspection
+          path: .taste-skill/inspect/
+          if-no-files-found: ignore
+          retention-days: 7
