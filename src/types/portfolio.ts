@@ -19,6 +19,13 @@ export interface PreviewImage {
   readonly credit?: ImageCredit;
 }
 
+export interface ProjectShowcase {
+  readonly title: string;
+  readonly description: string;
+  readonly command: string;
+  readonly detail: string;
+}
+
 export interface Project {
   readonly id: string;
   readonly name: string;
@@ -33,6 +40,7 @@ export interface Project {
   readonly featured?: boolean;
   readonly fragments?: readonly PreviewImage[];
   readonly contextPhotos?: readonly PreviewImage[];
+  readonly showcase?: ProjectShowcase;
 }
 
 export interface FocusGroup {
