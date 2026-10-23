@@ -9,13 +9,7 @@ interface ProjectEntryProps {
   readonly textSide: "left" | "right";
 }
 
-function ImageCaption({
-  image,
-  fallback,
-}: {
-  readonly image: PreviewImage;
-  readonly fallback: string;
-}) {
+function ImageCaption({ image }: { readonly image: PreviewImage }) {
   if (!image.caption && !image.credit) return null;
 
   return (
@@ -51,13 +45,13 @@ function ImageCaption({
   );
 }
 
-function InterfaceImage({ image, fallback }: { readonly image: PreviewImage; readonly fallback: string }) {
+function InterfaceImage({ image }: { readonly image: PreviewImage }) {
   return (
     <figure className="m-0 min-w-0">
       <div data-ui className="work-picture overflow-hidden">
         <img src={image.src} alt={image.alt} loading="lazy" decoding="async" className="h-auto w-full" />
       </div>
-      <ImageCaption image={image} fallback={fallback} />
+      <ImageCaption image={image} />
     </figure>
   );
 }
@@ -174,11 +168,11 @@ export function ProjectEntry({ project, textSide }: ProjectEntryProps) {
     return (
       <>
         <div className={imageColumn}>
-          <InterfaceImage image={project.preview} fallback={`${project.name} project image.`} />
+          <InterfaceImage image={project.preview} />
           {project.fragments && project.fragments.length > 0 && (
             <div className="mt-6 grid grid-cols-2 items-start gap-4 max-md:grid-cols-1">
               {project.fragments.map((fragment) => (
-                <InterfaceImage key={fragment.src} image={fragment} fallback={`${project.name} interface detail.`} />
+                <InterfaceImage key={fragment.src} image={fragment} />
               ))}
             </div>
           )}
