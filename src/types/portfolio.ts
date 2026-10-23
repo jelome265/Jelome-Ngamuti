@@ -8,6 +8,8 @@ export interface ExternalLink {
 export interface ImageCredit {
   readonly label: string;
   readonly href: string;
+  readonly licenseLabel?: string;
+  readonly licenseHref?: string;
 }
 
 export interface PreviewImage {
