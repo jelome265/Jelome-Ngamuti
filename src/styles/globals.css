@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+/* Semantic tokens from docs/design-tokens.md (Tailwind v4 CSS-first theme). */
+@theme {
+  --color-background: #f7f5f0;
+  --color-surface: #ffffff;
+  --color-foreground: #24231f;
+  --color-muted: #716d64;
+  --color-border: #d8d2c6;
+  --color-accent: #795b36;
+  --color-accent-hover: #5d4328;
+  --color-dark-surface: #24231f;
+  --color-dark-text: #f7f5f0;
+  --color-dark-accent: #c4a574;
+  --color-focus: #245dab;
+
+  --font-display: Cinzel, Georgia, "Times New Roman", serif;
+  --font-sans: Inter, Arial, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.7;
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
