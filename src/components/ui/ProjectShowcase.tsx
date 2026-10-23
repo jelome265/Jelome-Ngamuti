@@ -9,16 +9,11 @@ export function ProjectShowcase({ content }: ProjectShowcaseProps) {
   const [copyStatus, setCopyStatus] = useState("");
 
   async function copyCommand() {
-    if (!navigator.clipboard?.writeText) {
-      setCopyStatus("Clipboard access is unavailable. Select the command and copy it manually.");
-      return;
-    }
-
     try {
       await navigator.clipboard.writeText(content.command);
       setCopyStatus("Command copied.");
     } catch {
-      setCopyStatus("Copy failed. Select the command and copy it manually.");
+      setCopyStatus("Copy unavailable. Select the command and copy it manually.");
     }
   }
 
@@ -34,7 +29,9 @@ export function ProjectShowcase({ content }: ProjectShowcaseProps) {
           </div>
           <button
             type="button"
-            onClick={copyCommand}
+            onClick={() => {
+              void copyCommand();
+            }}
             className="inline-flex min-h-11 shrink-0 items-center bg-foreground px-4 text-[15px] font-medium text-surface hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-4"
           >
             Copy command
