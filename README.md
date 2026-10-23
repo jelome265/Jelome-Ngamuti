@@ -8,13 +8,13 @@ This repository is being rebuilt from a documented design direction before imple
 
 ## Design documentation
 
-- [Design brief](design-brief.md) — audience, goals, constraints, success criteria.
-- [Information architecture](information-architecture.md) — page model, navigation, and content hierarchy.
-- [Design tokens](design-tokens.md) — color, typography, spacing, layout, and breakpoints.
-- [Components](components.md) — component inventory and interaction states.
-- [Responsive accessibility](responsive-accessibility.md) — responsive behavior and accessibility requirements.
-- [SEO metadata](seo-metadata.md) — search metadata, sharing previews, and structured data.
-- [System architecture](system-architecture.md) — application boundaries, technology choices, and proposed folder structure.
+- [Design brief](docs/design-brief.md) — audience, goals, constraints, success criteria.
+- [Information architecture](docs/information-architecture.md) — page model, navigation, and content hierarchy.
+- [Design tokens](docs/design-tokens.md) — color, typography, spacing, layout, and breakpoints.
+- [Components](docs/components.md) — component inventory and interaction states.
+- [Responsive accessibility](docs/responsive-accessibility.md) — responsive behavior and accessibility requirements.
+- [SEO metadata](docs/seo-metadata.md) — search metadata, sharing previews, and structured data.
+- [System architecture](docs/system-architecture.md) — application boundaries, technology choices, and proposed folder structure.
 
 ## Current scope
 
