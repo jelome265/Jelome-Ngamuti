@@ -18,44 +18,42 @@ export function ProjectShowcase({ content }: ProjectShowcaseProps) {
   }
 
   return (
-    <figure className="reveal m-0 min-w-0">
-      <div data-ui className="bg-surface p-6 sm:p-8">
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <div className="min-w-0">
-            <h4 className="text-[26px] leading-[1.15] font-semibold tracking-[-0.02em]">
-              {content.title}
-            </h4>
-            <p className="mt-3 text-[16px] leading-[1.5] text-muted">{content.description}</p>
-          </div>
-          <button
-            type="button"
-            onClick={() => {
-              void copyCommand();
-            }}
-            className="inline-flex min-h-11 shrink-0 items-center bg-foreground px-4 text-[15px] font-medium text-surface hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-4"
-          >
-            Copy command
-          </button>
+    <div data-ui className="reveal min-w-0 bg-surface p-6 sm:p-8">
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div className="min-w-0">
+          <p className="text-[26px] leading-[1.15] font-semibold tracking-[-0.02em]">
+            {content.title}
+          </p>
+          <p className="mt-3 text-[16px] leading-[1.5] text-muted">{content.description}</p>
         </div>
-
-        <pre className="mt-6 overflow-x-auto bg-background p-4 text-[14px] leading-[1.65] whitespace-pre-wrap break-words"><code>{content.command}</code></pre>
-        <p className="mt-4 text-[16px] leading-[1.5]">{content.detail}</p>
-        <p role="status" aria-live="polite" className="mt-3 min-h-6 text-[14px] leading-[1.5] text-muted">
-          {copyStatus}
-        </p>
+        <button
+          type="button"
+          onClick={() => {
+            void copyCommand();
+          }}
+          className="inline-flex min-h-11 shrink-0 items-center bg-foreground px-4 text-[15px] font-medium text-surface hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-4"
+        >
+          Copy command
+        </button>
       </div>
-      <figcaption className="mt-3 text-[15px] leading-[1.45] text-muted">
-        Installation command documented in the{" "}
+
+      <pre className="mt-6 overflow-x-auto bg-background p-4 text-[14px] leading-[1.65] whitespace-pre-wrap break-words"><code>{content.command}</code></pre>
+      <p className="mt-4 text-[16px] leading-[1.5]">{content.detail}</p>
+      <p role="status" aria-live="polite" className="mt-3 min-h-6 text-[14px] leading-[1.5] text-muted">
+        {copyStatus}
+      </p>
+      <p className="mt-4 text-[15px] leading-[1.45] text-muted">
+        Read the{" "}
         <a
           href="https://github.com/jelome265/Rustacean#install-on-each-platform"
           target="_blank"
           rel="noopener noreferrer"
           className="underline underline-offset-4 hover:text-accent"
         >
-          Rustacean README
+          Rustacean installation guide
         </a>
         .
-      </figcaption>
-    </figure>
+      </p>
+    </div>
   );
 }
