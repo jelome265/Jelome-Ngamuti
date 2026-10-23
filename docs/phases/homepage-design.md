@@ -1,6 +1,6 @@
 # Phase 1 — Homepage Design
 
-**Status:** Proposed for review  
+**Status:** Approved (Phase 1 complete)  
 **Purpose:** Decide the actual homepage composition for desktop and mobile before scaffolding or coding it.
 
 ## 1. Design direction
@@ -152,8 +152,22 @@ Mobile:
 
 ## 9. Phase 1 acceptance criteria
 
-- [ ] Desktop and mobile compositions in this document are reviewed and approved.
-- [ ] Section order and primary actions are agreed.
+- [x] Desktop and mobile compositions in this document are reviewed and approved.
+- [x] Section order and primary actions are agreed.
 - [ ] Final project selection is explicitly deferred to Phase 2.
 - [ ] Token values remain consistent with ../design-tokens.md or any changes are documented there.
-- [ ] No implementation begins until the homepage composition is approved.
+- [x] No implementation begins until the homepage composition is approved.
+
+## 10. Review decisions
+
+| # | Item | Decision |
+|---|---|---|
+| 1 | Section order and primary actions | Approved |
+| 2 | Positioning line | Approved: "Computer Science student focused on building reliable software." |
+| 3 | GitHub placement | Superseded by item 2 below |
+| 4 | Architectural diagram | Approved |
+| 5 | Mobile menu | Slide-down panel: attached under the header, pushes content down, closes on selection, Escape, or menu button; focus returns to trigger on Escape |
+| 6 | GitHub placement (revised) | Removed from header; kept in hero (secondary action) and footer |
+
+Open follow-ups:
+- Phase 1 approved by the owner. Final project selection remains deferred to Phase 2.
