@@ -56,10 +56,11 @@ export const projects: readonly Project[] = [
     status: "Released",
     technologies: ["Rust", "Python", "npm"],
     repoUrl: "https://github.com/jelome265/Rustacean",
-    preview: {
-      src: "https://raw.githubusercontent.com/jelome265/Rustacean/main/.github/assets/banner.svg",
-      alt: "Rustacean's project banner describing enterprise engineering skills for Rust, backed by executable checks.",
-      caption: "Rustacean project banner from its public repository.",
+    showcase: {
+      title: "Install for Codex",
+      description: "The documented project installer validates the skill suite before writing it into a project.",
+      command: "python3 tools/install_skills.py --agent codex --project-root . --apply",
+      detail: "The installer supports a dry run first; the apply command writes and verifies the installed skills.",
     },
     demo: {
       label: "Project site",
