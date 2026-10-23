@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import type { PreviewImage, Project } from "../../types/portfolio";
 import { LatestCommit } from "./LatestCommit";
 import { ProjectShowcase } from "./ProjectShowcase";
@@ -15,9 +16,11 @@ function ImageCaption({
   readonly image: PreviewImage;
   readonly fallback: string;
 }) {
+  if (!image.caption && !image.credit) return null;
+
   return (
     <figcaption className="mt-3 text-[15px] leading-[1.45] text-muted">
-      <span className="block">{image.caption ?? fallback}</span>
+      {image.caption && <span className="block">{image.caption}</span>}
       {image.credit && (
         <span className="block text-[13px]">
           Photograph by{" "}
@@ -71,8 +74,49 @@ function ContextImage({ image }: { readonly image: PreviewImage }) {
         height={720}
         className="aspect-[4/3] w-full object-cover"
       />
-      <ImageCaption image={image} fallback="Lilongwe, Malawi." />
     </figure>
+  );
+}
+
+function PhotoCredits({ photos }: { readonly photos: readonly PreviewImage[] }) {
+  const creditedPhotos = photos.flatMap((image) =>
+    image.credit ? [{ image, credit: image.credit }] : [],
+  );
+
+  if (creditedPhotos.length === 0) return null;
+
+  return (
+    <p className="text-[13px] leading-[1.5] text-muted">
+      Photograph credits:{" "}
+      {creditedPhotos.map(({ image, credit }, index) => (
+        <Fragment key={image.src}>
+          {index > 0 ? "; " : ""}
+          {image.caption && <>{image.caption} — </>}
+          <a
+            href={credit.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-accent"
+          >
+            {credit.label}
+          </a>
+          {credit.licenseLabel && credit.licenseHref && (
+            <>
+              {" ("}
+              <a
+                href={credit.licenseHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-accent"
+              >
+                {credit.licenseLabel}
+              </a>
+              {")"}
+            </>
+          )}
+        </Fragment>
+      ))}
+    </p>
   );
 }
 
@@ -90,7 +134,7 @@ export function ProjectEntry({ project, textSide }: ProjectEntryProps) {
   const text = (
     <div className="reveal flex flex-col gap-5">
       <h3 className="text-[40px] leading-[1.05] font-bold tracking-[-0.02em]">{project.name}</h3>
-      <p className="text-[24px] leading-[1.3]">{project.summary}</p>
+      <p className="text-[24px] leading-[1.3] max-md:text-[20px]">{project.summary}</p>
       <p>{project.contribution}</p>
       {project.note && <p className="text-muted">{project.note}</p>}
       <p className="text-[15px] text-muted">
@@ -122,6 +166,7 @@ export function ProjectEntry({ project, textSide }: ProjectEntryProps) {
           </li>
         )}
       </ul>
+      {project.contextPhotos && <PhotoCredits photos={project.contextPhotos} />}
     </div>
   );
 
